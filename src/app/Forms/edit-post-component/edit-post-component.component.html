@@ -1,0 +1,14 @@
+<form (ngSubmit)="onUpdate()" #PostChangeForm="ngForm">
+  <div class="form-group">
+    <h1 class="center">Please Edit {{Post.Title}}</h1>
+    <input type="text" class="form-control"  aria-describedby="emailHelp"
+           ngModel name='EditPostTitle' placeholder="" value="{{Post.Title}}">
+    <input type="text" class="form-control"
+           ngModel name='EditPostContent' placeholder="" value="{{Post.Content}}">
+    <input type="text" class="form-control"
+           ngModel name='EditPostImage' placeholder="" value="{{Post.Image}}">
+    <input type="text" class="form-control"
+           ngModel name='EditPostCategory' placeholder="" value="{{Post.Category}}">
+  </div>
+  <button type="submit" class="btn btn-warning btn-block" (click)="onUpdate()">Update</button>
+</form>

@@ -1,0 +1,8 @@
+<form (ngSubmit)="onSubmit()" #CommentCreateForm="ngForm">
+  <h1>Please state your comment</h1>
+  <div class="form-group">
+    <textarea type="text" class="form-control" ngModel name="CommentContent" placeholder="Please state your comment">
+    </textarea>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+</form>
