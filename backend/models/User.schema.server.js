@@ -6,6 +6,8 @@ const UserSchema = mongoose.Schema({
     Picture: String,
     Description: String,
     Credentials: String
-}, {collection: "Users"});
+}, {collection: "users"});
 
 module.exports = UserSchema;
+
+

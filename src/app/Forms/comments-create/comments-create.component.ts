@@ -24,7 +24,7 @@ export class CommentsCreateComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.CommentObject.User = '5c09f1fee237de0e8d83ce42';
+    this.CommentObject.User = '5c0ae857e237de0e8d83ce43';
     this.CommentObject.Content = this.commentFormObject.value.CommentContent;
     this.forumbackendService.CreateCommentForPost(this.CommentObject, this.id);
   }

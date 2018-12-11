@@ -14,7 +14,8 @@ app.use(function(req, res, next) {
 });
 require('./data')();
 const Postdao = require('./dao/Post.dao.server');
-const Answerdao = require('./dao/Answer.dao.server')
+const Answerdao = require('./dao/Answer.dao.server');
+const Userdao = require('./dao/User.dao.server'); // import to run the model
 //Route Begins
 app.post('/api/addpost', (req, res) => {
   Postdao.createSinglePost(
@@ -26,8 +27,7 @@ app.post('/api/addpost', (req, res) => {
     .then(post => res.send(post));
 });
 app.get('/api/getposts', (req, res) => {
-  Postdao.FetchAllPosts().then(response => res.send(response));
-});
+  Postdao.FetchAllPosts().then(response => res.send(response))});
 app.get('/api/posts/:id', (req, res) => {
   const id = req.params.id;
   Postdao.FetchOnePost(id).then(response => res.send(response));

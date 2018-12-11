@@ -5,3 +5,10 @@
   <a class="btn btn-primary btn-block" role="button"
      (click)="NavigateCommentCreate()">Add Comments</a>
 </div>
+<div *ngFor="let comment of Post.Comments; let i = index">
+  <p><strong>{{comment.User.Name}}</strong></p>
+  <h3>{{comment.Content}}</h3>
+  <button class="btn btn-success">Reply</button>
+  <button class="btn btn-warning">Edit</button>
+  <button class="btn btn-danger">Delete</button>
+</div>

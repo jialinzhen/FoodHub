@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ForumbackendClientService} from '../../services/forumbackend.client.service';
 import {NgForm} from '@angular/forms';
+import {Post} from '../../models/Post.model';
+
 
 @Component({
   selector: 'app-edit-post-component',
@@ -12,10 +14,9 @@ export class EditPostComponentComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               public forumbackendService: ForumbackendClientService) { }
   id: String;
-  Post = {};
+  Post: Post;
   @ViewChild('PostChangeForm') EditFormObject: NgForm;
   ngOnInit() {
-    // this.id = this.route.params.value.postid;
     this.route.params.subscribe(params => {
       this.id = params['postid'];
     });

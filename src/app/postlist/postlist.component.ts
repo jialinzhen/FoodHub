@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Post} from './models/Post.model';
+import {Post} from '../models/Post.model';
 import {ForumbackendClientService} from '../services/forumbackend.client.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
