@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <h1 class="display-4">{{RecipeDetail.Name}}</h1>
+  <img src="{{RecipeDetail.PictureUrl}}" width="100px" height="100px" />
+  <hr class="my-4">
+  <p>{{RecipeDetail.Description}}</p>
+  <button class="btn btn-primary btn-block"
+          type="button"
+          (click)="NavigateToCommentCreate()">Add Comments</button>
+</div>
+<div *ngFor="let comment of RecipeDetail.CommentList; let i = index">
+  <h3>{{comment.Content}}</h3>
+  <h3>{{comment.Rating}}</h3>
+  <p><strong>{{comment.User.Name}}</strong></p>
+  <img src="{{comment.User.PictureUrl}}" width="100px" height="100px"/>
+  <button class="btn btn-warning">Edit</button>
+  <button class="btn btn-danger">Delete</button>
+</div>

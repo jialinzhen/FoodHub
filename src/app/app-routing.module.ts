@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PostCreateFormComponent} from './Forms/post-create-form/post-create-form.component';
-import {PostlistComponent} from './postlist/postlist.component';
-import {EditPostComponentComponent} from './Forms/edit-post-component/edit-post-component.component';
-import {SinglePostComponent} from './single-post/single-post.component';
-import {CommentsCreateComponent} from './Forms/comments-create/comments-create.component';
-import {CommentsEditComponent} from './Forms/comments-edit/comments-edit.component';
-
+import {RecipelistComponent} from './recipelist/recipelist.component';
+import {CreateRecipeFormComponent} from './Forms/create-recipe-form/create-recipe-form.component';
+import {EditRecipeFormComponent} from './Forms/edit-recipe-form/edit-recipe-form.component';
+import {EditRecipeCommentFormComponent} from './Forms/edit-recipe-comment-form/edit-recipe-comment-form.component';
+import {CreateRecipeCommentFormComponent} from './Forms/create-recipe-comment-form/create-recipe-comment-form.component';
+import {RecipeDetailComponent} from './recipe-detail/recipe-detail.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'posts', pathMatch: 'full'},
-  {path: 'create', component: PostCreateFormComponent},
-  {path: 'posts', component: PostlistComponent, pathMatch: 'full'},
-  {path: 'posts/:postid/edit', component: EditPostComponentComponent},
-  {path: 'posts/:postid/comments', component: SinglePostComponent},
-  {path: 'posts/:postid/comments/create', component: CommentsCreateComponent},
-  {path: 'posts/:postid/comments/:commentid/edit', component: CommentsEditComponent}
+  {path: '', redirectTo: 'foods', pathMatch: 'full'},
+  {path: 'foods', component: RecipelistComponent},
+  {path: 'foods/create', component: CreateRecipeFormComponent},
+  {path: 'foods/:id', component: RecipeDetailComponent},
+  {path: 'foods/:id/edit', component: EditRecipeFormComponent},
+  {path: 'foods/:id/createComment', component: CreateRecipeCommentFormComponent},
+  {path: 'foods/:id/:commentid/edit', component: EditRecipeCommentFormComponent},
 ];
 
 @NgModule({

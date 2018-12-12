@@ -1,0 +1,25 @@
+<div *ngIf="RecipeList.length > 0; else AddMoreRecipe">
+  <div class="list-group">
+    <div class="list-group-item list-group-item-action flex-column align-items-start"
+         *ngFor="let recipe of RecipeList; let i = index">
+      <p>{{recipe.Category}}</p>
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{recipe.Name}}</h5>
+        <small>3 days ago</small>
+      </div>
+      <img class="img" width="200px" height="200px" src="{{recipe.PictureUrl}}"/>
+      <div>
+        <p>Created By : Temporary User</p>
+        <small>User Info</small>
+      </div>
+      <p class="mb-1">{{recipe.Description}}</p>
+      <button class="btn btn-warning" (click)="onrecipeEdit(recipe._id)">Edit</button>
+      <button class="btn btn-danger" (click)="onDelete(i, recipe._id)">Delete</button>
+      <button class="btn btn-success" (click)="NavigateToDetail(recipe._id)">Visit More About This Recipe</button>
+      <button class="btn btn-info">Save</button>
+    </div>
+  </div>
+</div>
+<ng-template #AddMoreRecipe>
+  List is now empty
+</ng-template>

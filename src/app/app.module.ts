@@ -5,33 +5,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SinglePostComponent } from './single-post/single-post.component';
-import { PostlistComponent } from './postlist/postlist.component';
-import { PostCreateFormComponent } from './Forms/post-create-form/post-create-form.component';
-import {ForumbackendClientService} from './services/forumbackend.client.service';
-import { EditPostComponentComponent } from './Forms/edit-post-component/edit-post-component.component';
-import { CommentsCreateComponent } from './Forms/comments-create/comments-create.component';
-import { CommentsEditComponent } from './Forms/comments-edit/comments-edit.component';
-
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipelistComponent } from './recipelist/recipelist.component';
+import { CreateRecipeFormComponent } from './Forms/create-recipe-form/create-recipe-form.component';
+import { CreateRecipeCommentFormComponent } from './Forms/create-recipe-comment-form/create-recipe-comment-form.component';
+import { EditRecipeFormComponent } from './Forms/edit-recipe-form/edit-recipe-form.component';
+import { EditRecipeCommentFormComponent } from './Forms/edit-recipe-comment-form/edit-recipe-comment-form.component';
+import {FoodServiceClient} from './Services/food.service.client';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SinglePostComponent,
-    PostlistComponent,
-    PostCreateFormComponent,
-    EditPostComponentComponent,
-    CommentsCreateComponent,
-    CommentsEditComponent,
-
+    RecipeDetailComponent,
+    RecipelistComponent,
+    CreateRecipeFormComponent,
+    CreateRecipeCommentFormComponent,
+    EditRecipeFormComponent,
+    EditRecipeCommentFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [ForumbackendClientService],
+  providers: [FoodServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

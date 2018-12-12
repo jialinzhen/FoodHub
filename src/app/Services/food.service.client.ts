@@ -1,0 +1,35 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class FoodServiceClient {
+  local = 'http://localhost:3002/api/';
+  AddOneRecipe = recipe => fetch(this.local + 'addrecipe', {
+    body: JSON.stringify(recipe),
+    method: 'POST',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  GetAllRecipe = ()  => fetch(this.local + 'allrecipe').then(response => response.json());
+  GetOneRecipe = (id) => fetch(this.local + 'foods/' + id).then(response => response.json());
+  updateOneRecipe = (id, recipe) => fetch(this.local + 'foods/' + id , {
+    body: JSON.stringify(recipe),
+    method: 'PUT',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  DeleteOneRecipe = (id) => fetch(this.local + 'foods/' + id , {
+    method: 'DELETE',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  AddingCommentForRecipe = (comment, id) => fetch(this.local + 'foods/' + id + '/comment', {
+    body: JSON.stringify(comment),
+    method: 'POST',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+}

@@ -13,37 +13,25 @@ app.use(function(req, res, next) {
   next();
 });
 require('./data')();
-const Postdao = require('./dao/Post.dao.server');
-const Answerdao = require('./dao/Answer.dao.server');
-const Userdao = require('./dao/User.dao.server'); // import to run the model
-//Route Begins
-app.post('/api/addpost', (req, res) => {
-  Postdao.createSinglePost(
-    '5c09f1fee237de0e8d83ce42',
-    req.body.Title,
-    req.body.Content,
-    req.body.Image,
-    req.body.Category)
-    .then(post => res.send(post));
+const Recipedao = require('../backend/FoodHubbackenddao/Recipe.dao.server');
+const Userdao = require('../backend/FoodHubbackenddao/User.dao.server');
+const commentdao = require('../backend/FoodHubbackenddao/Comments.dao.server');
+app.post('/api/addrecipe', (req, res) => {
+  Recipedao.createSingleRecipe(req.body).then(recipe => res.send(recipe));
 });
-app.get('/api/getposts', (req, res) => {
-  Postdao.FetchAllPosts().then(response => res.send(response))});
-app.get('/api/posts/:id', (req, res) => {
-  const id = req.params.id;
-  Postdao.FetchOnePost(id).then(response => res.send(response));
+app.get('/api/allrecipe', (req, res) => {
+  Recipedao.fetchAllRecipe().then(response => res.send(response));
 });
-app.put('/api/posts/:id', (req, res) => {
-  const id = req.params.id;
-  const newPost = req.body;
-  Postdao.UpdateOnePost(id, newPost).then(response => res.send(response));
+app.get('/api/foods/:id', (req, res) => {
+  Recipedao.fetchOneRecipe(req.params.id).then(response => res.send(response));
+});
+app.put('/api/foods/:id', (req, res) => {
+  Recipedao.fetchOneRecipeAndUpdate(req.params.id, req.body).then(response => res.send(response))
 })
-app.delete('/api/posts/:id', (req, res) => {
-  const id = req.params.id;
-  Postdao.DeleteOnePost(id).then(response => res.send(response));
-});
-app.post('/api/posts/:id/comments', (req, res) => {
-  // id of the post you add the comment to, body is the comment object
-   Answerdao.CreateComment(req.params.id, req.body).then(comment => res.send(comment));
-});
-
+app.delete('/api/foods/:id', (req, res) => {
+  Recipedao.fetchOneRecipeAndDelete(req.params.id).then(response => res.send(response));
+})
+app.post('/api/foods/:id/comment', (req, res) => {
+  commentdao.createComment(req.params.id, req.body).then(response => res.send(response));
+})
 app.listen(3002);

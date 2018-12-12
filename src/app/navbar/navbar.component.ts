@@ -12,9 +12,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  AddQuestion() {
-    this.router.navigate(['/create']);
+  GoToAllRecipe() {
+    this.router.navigate(['foods/create']);
   }
-
 }
