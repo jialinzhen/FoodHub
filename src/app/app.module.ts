@@ -12,6 +12,8 @@ import { CreateRecipeCommentFormComponent } from './Forms/create-recipe-comment-
 import { EditRecipeFormComponent } from './Forms/edit-recipe-form/edit-recipe-form.component';
 import { EditRecipeCommentFormComponent } from './Forms/edit-recipe-comment-form/edit-recipe-comment-form.component';
 import {FoodServiceClient} from './Services/food.service.client';
+import { RegisterFormComponent } from './Forms/Authentication/register-form/register-form.component';
+import { LogInFormComponent } from './Forms/Authentication/log-in-form/log-in-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {FoodServiceClient} from './Services/food.service.client';
     CreateRecipeCommentFormComponent,
     EditRecipeFormComponent,
     EditRecipeCommentFormComponent,
+    RegisterFormComponent,
+    LogInFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,9 @@
           Authentication
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" ><button class="btn btn-block btn-primary">Log In</button></a>
-          <a class="dropdown-item" ><button class="btn btn-success btn-block">Register</button></a>
+          <a class="dropdown-item" ><button class="btn btn-block btn-primary" (click)="GoToLogIn()">Log In</button></a>
+          <a class="dropdown-item" ><button class="btn btn-success btn-block" (click)="GoToRegister()">Register</button></a>
+          <a class="dropdown-item" ><button class="btn btn-danger btn-block" (click)="LogUserOut()">Log out</button></a>
         </div>
       </li>
     </ul>

@@ -47,4 +47,18 @@ export class FoodServiceClient {
   })
   FetchSingleComment = (id, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId).
   then(response => response.json())
+  RegisterUserUp = (userInfo) => fetch(this.local + 'register', {
+    body: JSON.stringify(userInfo),
+    method: 'POST',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  LoggingUserIn = () => fetch(this.local + 'login', {
+    method: 'POST',
+     headers: {
+      'content-type': 'application/json'
+     }
+  })
+  LoggingUserOut = () => fetch(this.local + 'logout').then(response => console.log(response));
 }
