@@ -30,6 +30,6 @@ export class CreateRecipeCommentFormComponent implements OnInit {
   onSubmit() {
     this.CommentToBeSubmittedObject.Content = this.commentForm.value.CommentContent;
     this.CommentToBeSubmittedObject.Rating = this.commentForm.value.RecipeRating;
-    this.foodbackendService.AddingCommentForRecipe(this.CommentToBeSubmittedObject, this.id);
+    this.foodbackendService.AddingCommentForRecipe(this.CommentToBeSubmittedObject, this.id).then(console.log('success'));
   }
 }

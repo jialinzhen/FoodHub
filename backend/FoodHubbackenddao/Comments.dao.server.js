@@ -1,18 +1,35 @@
 const mongoose = require("mongoose");
 const CommentSchema = require('../FoodHubbackendmodel/Comments.schema.server');
 const CommentModel = mongoose.model('CommentModel', CommentSchema);
-const Recipedao = require('./Recipe.dao.server')
+const Recipedao = require('../FoodHubbackenddao/Recipe.dao.server');
 
 createComment = (id, comment) => {
   return CommentModel.create({
     User: '5c116d490ae31552433fbc1b',
+    Recipe: id,
     Content: comment.Content,
     Rating: comment.Rating
-  }).then(commentobj => {
-    return Recipedao.AddCommentToThePost(id, commentobj);
-  })
+  });
+};
+DeleteAllCommentForThePost = (id) => {
+  return CommentModel.remove({Recipe: id});
 }
+DeleteOneCommentForAPost = (id) => {
+  return CommentModel.findOneAndDelete({_id: id});
+}
+UpdateOneCommentForAPost = (id, newComment) => {
+  return CommentModel.findOneAndUpdate({_id: id}, {$set:
+      {Content: newComment.Content,
+        Rating: newComment.Rating}})
+};
+FetchOneCommentById = (commentId) => {
+  return CommentModel.findOne({_id: commentId});
+};
 module.exports = {
-  createComment
+  createComment,
+  DeleteAllCommentForThePost,
+  DeleteOneCommentForAPost,
+  UpdateOneCommentForAPost,
+  FetchOneCommentById
 }
 

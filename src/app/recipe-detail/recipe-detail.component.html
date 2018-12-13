@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="RecipeDetail; else loadDetail">
   <h1 class="display-4">{{RecipeDetail.Name}}</h1>
   <img src="{{RecipeDetail.PictureUrl}}" width="100px" height="100px" />
   <hr class="my-4">
@@ -7,11 +7,14 @@
           type="button"
           (click)="NavigateToCommentCreate()">Add Comments</button>
 </div>
-<div *ngFor="let comment of RecipeDetail.CommentList; let i = index">
+<div *ngFor="let comment of CommentsForRecipe; let i = index">
   <h3>{{comment.Content}}</h3>
   <h3>{{comment.Rating}}</h3>
   <p><strong>{{comment.User.Name}}</strong></p>
   <img src="{{comment.User.PictureUrl}}" width="100px" height="100px"/>
-  <button class="btn btn-warning">Edit</button>
-  <button class="btn btn-danger">Delete</button>
+  <button class="btn btn-warning" (click)="NavigateToCommentEdit(comment._id)">Edit</button>
+  <button class="btn btn-danger" (click)="DeletingComment(comment._id, i)">Delete</button>
 </div>
+<ng-template #loadDetail>
+  The content is still loading
+</ng-template>

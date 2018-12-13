@@ -32,4 +32,19 @@ export class FoodServiceClient {
       'content-type' : 'application/json'
     }
   })
+  UpdatingCommentForRecipe = (id, comment, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId, {
+    body: JSON.stringify(comment),
+    method: 'PUT',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  DeleteCommentForRecipe = (id, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId, {
+    method: 'DELETE',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
+  FetchSingleComment = (id, commentId) => fetch(this.local + 'foods/' + id + '/comment/' + commentId).
+  then(response => response.json())
 }
