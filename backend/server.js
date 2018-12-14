@@ -4,6 +4,7 @@ var app = express();
 var passport = require('passport');
 var passportLocal = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
+var LocalStrategy = require('passport-local');
 // Start All the Routes
 require('./data')();
 app.use(bodyParser.json()); // for parsing application/json
@@ -65,10 +66,17 @@ app.post('/api/register', (req, res) => {
   Userdao.UserRegistration(req.body).then(user => {
     return passport.authenticate('local');
   }).then(response => res.send(req.user))
-})
-app.post('/api/login', passport.authenticate("local"), (req, res) => {
-  res.send(req.user)
-})
+});
+// login and logout
+// app.post('/api/login', (req, res) => passport.authenticate('local')((req, res) => res.send("Succeed")));
+function login(req, res) {
+  let user = req.user;
+  res.json(user);
+}
+// app.post('/api/login', passport.authenticate("local"), (req, res) => {
+//   return res.json(req.user);
+// })
+app.post('/api/login', passport.authenticate("local"), login);
 app.get('/api/logout', (req, res) => {
   req.logout()
 })

@@ -8,12 +8,15 @@ import {FoodServiceClient} from '../../../Services/food.service.client';
   styleUrls: ['./log-in-form.component.css']
 })
 export class LogInFormComponent implements OnInit {
+  @ViewChild('')
+  LogInUserObj = {}
 
   constructor(public foodbackendService: FoodServiceClient) { }
 
   ngOnInit() {
   }
   onLogIn() {
-    this.foodbackendService.LoggingUserIn();
+    this.LogInUserObj.username =
+    this.foodbackendService.LoggingUserIn().then(response => console.log(response));
   }
 }
