@@ -1,4 +1,4 @@
-<form (ngSubmit)="onLogIn()" #LogInForm>
+<form (ngSubmit)="onLogIn()" #LogInForm="ngForm">
   <div class="form-group">
     <h1>Please Log In</h1>
     <input class="form-control" ngModel name="LogInEmail" email required placeholder="Please Set Your Email"/>

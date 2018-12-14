@@ -62,22 +62,20 @@ app.delete('/api/foods/:id/comment/:commentid', (req, res) => {
     Recipedao.DeleteACommentInAPost(req.params.id, req.params.commentid)
   }).then(response => res.send(response))
 })
+//Auth Route Starts
 app.post('/api/register', (req, res) => {
   Userdao.UserRegistration(req.body).then(user => {
     return passport.authenticate('local');
   }).then(response => res.send(req.user))
 });
-// login and logout
-// app.post('/api/login', (req, res) => passport.authenticate('local')((req, res) => res.send("Succeed")));
-function login(req, res) {
-  let user = req.user;
-  res.json(user);
-}
-// app.post('/api/login', passport.authenticate("local"), (req, res) => {
-//   return res.json(req.user);
-// })
-app.post('/api/login', passport.authenticate("local"), login);
+app.post('/api/login', passport.authenticate("local"), (req, res) => {
+  res.send(res.json(req.user));
+});
 app.get('/api/logout', (req, res) => {
   req.logout()
 })
+app.get('/api/loggedin', (req, res) => {
+  res.send(req.isAuthenticated() ? req.user : '0');
+})
 app.listen(3002);
+

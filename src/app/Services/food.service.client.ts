@@ -54,7 +54,8 @@ export class FoodServiceClient {
       'content-type' : 'application/json'
     }
   })
-  LoggingUserIn = () => fetch(this.local + 'login', {
+  LoggingUserIn = (LogginInfo) => fetch(this.local + 'login', {
+    body: JSON.stringify(LogginInfo),
     method: 'POST',
      headers: {
       'content-type': 'application/json'

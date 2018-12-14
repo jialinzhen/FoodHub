@@ -8,6 +8,14 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
+
+findUserByCredentials = (credentials) => {
+  return UserModel.findOne({
+    username: credentials.username,
+    password: credentials.password
+  })
+}
+
 UserRegistration = (userInfo) => {
   return UserModel.register(new UserModel({username: userInfo.Email,
     Description: 'I am a dao server'}), userInfo.Password)
@@ -16,9 +24,9 @@ module.exports = {
   UserRegistration
 }
 
+
 function localStrategy(username, password, done) {
-  UserModel
-    .findUserByCredentials({username: username, password: password})
+  findUserByCredentials({username: username, password: password})
     .then(
       function(user) {
         if (!user) { return done(null, false); }
