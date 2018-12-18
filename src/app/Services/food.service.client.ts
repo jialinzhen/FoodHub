@@ -54,6 +54,12 @@ export class FoodServiceClient {
       'content-type' : 'application/json'
     }
   })
+  saveRecipeToUser = (id) => fetch(this.local + 'foods/' + id + '/likes', {
+    method: 'POST',
+    headers: {
+      'content-type' : 'application/json'
+    }
+  })
   LoggingUserIn = (LogginInfo) => fetch(this.local + 'login', {
     body: JSON.stringify(LogginInfo),
     method: 'POST',

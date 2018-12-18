@@ -1,5 +1,5 @@
+<h1 class="center">Please state your Comment For {{Recipe.Name}}</h1>
 <form (ngSubmit)="onSubmit()" #CommentCreateForm="ngForm" *ngIf="Recipe; else loadCommentForm">
-  <h1>Please state your Comment For {{Recipe.Name}}</h1>
   <div class="form-group">
     <textarea type="text" class="form-control" ngModel name="CommentContent"
               placeholder="Please state your comment">

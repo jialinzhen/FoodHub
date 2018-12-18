@@ -10,16 +10,16 @@ import {NgForm} from '@angular/forms';
 export class RegisterFormComponent implements OnInit {
   @ViewChild('RegisterForm') SignUpForm: NgForm;
   FormSubmit = {
-    Email: '',
-    Password: ''
+    username: '',
+    password: ''
   }
   constructor(public foodbackendService: FoodServiceClient) { }
 
   ngOnInit() {
   }
   onRegister() {
-    this.FormSubmit.Email = this.SignUpForm.value.RegisterEmail;
-    this.FormSubmit.Password = this.SignUpForm.value.RegisterPassword;
+    this.FormSubmit.username = this.SignUpForm.value.RegisterEmail;
+    this.FormSubmit.password = this.SignUpForm.value.RegisterPassword;
     console.log(this.FormSubmit);
     this.foodbackendService.RegisterUserUp(this.FormSubmit);
   }

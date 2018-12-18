@@ -1,6 +1,7 @@
 <div *ngIf="RecipeList.length > 0; else AddMoreRecipe">
   <div class="list-group">
-    <div class="list-group-item list-group-item-action flex-column align-items-start"
+    <div class="list-group-item list-group-item-action flex-column
+    align-items-start col-sm-6"
          *ngFor="let recipe of RecipeList; let i = index">
       <p>{{recipe.Category}}</p>
       <div class="d-flex w-100 justify-content-between">
@@ -16,10 +17,11 @@
       <button class="btn btn-warning" (click)="onrecipeEdit(recipe._id)">Edit</button>
       <button class="btn btn-danger" (click)="onDelete(i, recipe._id)">Delete</button>
       <button class="btn btn-success" (click)="NavigateToDetail(recipe._id)">Visit More About This Recipe</button>
-      <button class="btn btn-info">Save</button>
+      <button class="btn btn-info" (click)="onSave(recipe._id)">Save</button>
     </div>
   </div>
 </div>
 <ng-template #AddMoreRecipe>
   List is now empty
 </ng-template>
+

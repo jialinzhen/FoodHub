@@ -1,5 +1,5 @@
- <form (ngSubmit)="onSubmit()" *ngIf="Recipe; else LoadingEditForm" #recipeEditForm="ngForm">
-    <h1>Please Edit {{Recipe.Name}}</h1>
+<h1 class="center">Please Edit {{Recipe.Name}}</h1>
+<form (ngSubmit)="onSubmit()" *ngIf="Recipe; else LoadingEditForm" #recipeEditForm="ngForm">
     <div class="form-group">
       <input type="text"
              class="form-control"

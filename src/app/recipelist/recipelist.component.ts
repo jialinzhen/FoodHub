@@ -28,4 +28,7 @@ export class RecipelistComponent implements OnInit {
   NavigateToDetail(id) {
     this.router.navigate(['/foods/' + id]);
   }
+  onSave(id) {
+    this.foodbackendService.saveRecipeToUser(id);
+  }
 }

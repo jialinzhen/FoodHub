@@ -30,6 +30,6 @@ export class CreateRecipeFormComponent implements OnInit {
     this.newRecipe.Method = this.recipeForm.value.recipeMethod;
     this.newRecipe.Category = this.recipeForm.value.recipeCategory;
     this.newRecipe.PictureUrl = this.recipeForm.value.recipePicture;
-    this.foodbackendService.AddOneRecipe(this.newRecipe).then(res => console.log(res));
+    this.foodbackendService.AddOneRecipe(this.newRecipe);
   }
 }
